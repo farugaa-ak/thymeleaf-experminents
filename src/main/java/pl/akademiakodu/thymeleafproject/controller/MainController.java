@@ -18,7 +18,7 @@ public class MainController {
         return "index";
     }
 
-    @GetMapping("/{name}")
+    @GetMapping("/hello/{name}")
     public String index(@PathVariable String name, ModelMap modelMap){
         log.info("User with name={} clicked on index", name);
         modelMap.addAttribute("name", name);
