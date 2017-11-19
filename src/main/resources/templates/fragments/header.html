@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <meta charset="UTF-8"/>
     <title>footer</title>
@@ -7,6 +8,16 @@
 <body>
 <div th:fragment="header">
     <center><b> Biblioteka</b></center>
+
+    <div sec:authorize="isAuthenticated()">
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Sign Out"/>
+        </form>
+    </div>
+
+    <div sec:authorize="isAnonymous()">
+        <a th:href="@{/login}">Log in</a>
+    </div>
 </div>
 
 </body>
